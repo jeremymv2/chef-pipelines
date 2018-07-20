@@ -14,7 +14,7 @@ cookbooks or [policyfiles](http://hedge-ops.com/policyfiles/). There are many ex
 this article I am going to take a more comprehensive approach and define Policy as _ALL_ objects
 that coalesce together when nodes converge.
 
-Let's dive into how to do this. But before we can do this, let us enumerate our Chef Policy as the following objects:
+Let's dive into how to do this. But before we can do this, we shall enumerate our Chef Policy as the following objects:
  * cookbooks (broken out into dedicated repos, with a [project-wide Berksfile](https://github.com/FastRobot/chef-repo-example/blob/master/Berksfile) at the root of the `chef-repo`)
  * roles
  * data bags
