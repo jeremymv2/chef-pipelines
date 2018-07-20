@@ -14,9 +14,7 @@ cookbooks or [policyfiles](http://hedge-ops.com/policyfiles/). There are many ex
 this article I am going to take a more comprehensive approach and define Policy as _ALL_ objects
 that coalesce together when nodes converge.
 
-Let's dive into how to do this.
-
-First, to enumerate our Chef Policy as the following objects:
+Let's dive into how to do this. But before we can do this, let us enumerate our Chef Policy as the following objects:
  * cookbooks (broken out into dedicated repos, with a [project-wide Berksfile](https://github.com/FastRobot/chef-repo-example/blob/master/Berksfile) at the root of the `chef-repo`)
  * roles
  * data bags
@@ -36,9 +34,9 @@ Policy, the pipeline's job is to replace the manual process that was typically p
 commands.
 
 ## Important Pipeline Principles
- * Infrastructure as Code: everything about your company that is electronic and moves should be
+ * [Infrastructure as Code](https://www.thoughtworks.com/insights/blog/infrastructure-code-reason-smile) everything about your company that is electronic and moves should be
    treated as code and should be in source control, then driving a Pipeline to deliver the content.
- * Manual testing and promotion of changes will inevitably result in fails - automate all of this
+ * Manual testing and promotion of changes will inevitably result in fails - automate all of this 
  * Manage the code being tested/promoted alongside the automation policy (such as a `.travis.yml`
    or [Jenkinsfile](https://github.com/FastRobot/chef-repo-example/blob/master/Jenkinsfile)) in the _same_ repo. Do not decouple the two.
  * Restrict `knife` write access to a very limited number of Chef admins and the Pipeline user.
@@ -117,12 +115,11 @@ For integration testing, some approaches that can be used very effectively are:
    with the chef-repo artifact.
  * Terraform with inspec is a nice [pattern](https://github.com/chef-cookbooks/delivery-sugar/blob/master/examples/terraform/.delivery/build_cookbook/README_TERRAFORM.md#terraform-plan-files) for smoke testing
 
-## Promoting Cookbooks through Environments
 
-Finally, one of the most important concepts to cover is how to safely promote your cookbook policy
-in a scalable fashion.
+## Cookbook Promotion Across Environments
 
-# Cookbook Promotion Across Environments
+Finally, one of the most important concepts to cover is how to promote your cookbook policy
+in a safe and scalable fashion.
 
 Creating Chef Environments to match your Infrastructure Environments allows
 you to speak the same language with other groups within your organization and
@@ -464,11 +461,7 @@ Much of this comes from ideas initially presented below with my own thoughts lib
  * http://blog.vialstudios.com/the-environment-cookbook-pattern/
  * https://www.chef.io/blog/2013/11/19/chef-roles-arent-evil/
 
-## Diagram of Cookbook Patterns (Credit: Anthony Hodson)
-
-![diagram](https://raw.githubusercontent.com/jeremymv2/env_pinning/master/role_cookbook_pattern.png)
-
-# Important References
+## Important References
  * Lamont Lucas ChefConf 2018 [Session](https://www.youtube.com/watch?v=yP-R7GRyydg)
  * Chef Jenkins [Plugin](https://github.com/chef/chef-jenkins-plugin)
  * Noah Kantrowitz thoughts on docker [Jenkins](https://coderanger.net/jenkins/)
