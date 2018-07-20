@@ -5,7 +5,7 @@ There is no time like the present to review the automation that builds, tests, p
 your Chef policy safely and predictably in your place of work. If this is not something that
 you have mostly automated, or perhaps haven't yet started working on, then please continue
 reading! On the other hand, if you already have automation in place, as I mentioned, there could
-still be room for [kaizen](https://www.leanproduction.com/kaizen.html) In the rest of this article I will refer to this automtion
+still be room for [kaizen](https://www.leanproduction.com/kaizen.html). In the rest of this article I will refer to this automtion
 as a Pipeline. Ultimately, you should have many Pipelines with distinct reponsbilities and a model
 that scales for all your Chef Policy, where adding more Pipelines is a simple undertaking.
 
@@ -29,7 +29,7 @@ source control is the key to successfully implementing Pipelines.
 
 ## Pipeline
 Generally speaking a Pipeline is anything that acts on a source control code commit or merge (PR)
-request and performs automtated tests and promotion of that code change. With regards to Chef
+request and performs automated tests and promotion of that code change. With regards to Chef
 Policy, the pipeline's job is to replace the manual process that was typically performed by `knife`
 commands.
 
