@@ -22,10 +22,13 @@ Let's dive into how to do this. But before we can do this, we shall enumerate ou
  * policyfiles
  * nodes
 
-These items represent the most important objects in a `chef-repo` that should be kept up to date in version control.
+All these items represent the most important objects in a `chef-repo` that should be kept up to date in version control.
 With the exception of cookbooks and policyfiles, the remainder are not versioned. The object as it
 exists on the Chef Server is the source of truth. Transferring ownership of those objects to
 source control is the key to successfully implementing Pipelines.
+
+*Note* Somewhat outside the scope of Chef Policy, yet worth mentioning, are InSpec Compliance Profiles.
+These also benefit greatly from being [pushed through a Pipeline](https://github.com/jeremymv2/compliance_profile_pipeline).
 
 ## Pipeline
 Generally speaking a Pipeline is anything that acts on a source control code commit or merge (PR)
@@ -62,7 +65,6 @@ order. Best of all, everything is already included in the ChefDK:
    * inspec
    * rake
    * rubocop
-   * stove
 
 As you can see, the DK is a gold mine of important tools, and [easy](https://github.com/chef/chef-dk#installation) to install.
 
@@ -102,9 +104,6 @@ matrix:
 env: UNIT_AND_LINT=1
 ```
 
-For a Jenkins example, Michael Hedgpeth has a splendid write-up on [Cookbook Pipelines with Jenskinsfiles](http://hedge-ops.com/cookbook-pipeline-with-jenkinsfile/)
-so I won't recover that here.
-
 For integration testing, some approaches that can be used very effectively are:
 
  * [Test Kitchen](https://kitchen.ci/) This is a great [example](https://github.com/chef-cookbooks/audit/blob/master/.kitchen.yml)
@@ -115,6 +114,33 @@ For integration testing, some approaches that can be used very effectively are:
    with the chef-repo artifact.
  * Terraform with inspec is a nice [pattern](https://github.com/chef-cookbooks/delivery-sugar/blob/master/examples/terraform/.delivery/build_cookbook/README_TERRAFORM.md#terraform-plan-files) for smoke testing
 
+## Chef Policy Upload
+After all linting, syntax and other checks are completed successfully it's safe to upload the Policy
+to a Chef Server. In this article I'll mention doing so with Jenkins. However nothing precludes you
+from using another Pipeline toolset. With Jenkins 2.0 introduces a Pipeline driven by a `Jenkinsfile`,
+making it very simple to drop into every repo, managing the code and automation together.
+
+Again, the actual implementation of uploading Policy almost ridiculously simple. It just boils down
+to `berks upload ..` and `knife upload ..`. [Here's](https://github.com/FastRobot/chef-repo-example/blob/dca7d38ef1f0949412cde0f492670aa1deefe1ea/Jenkinsfile#L23-L35) a great example in a Jenkinsfile:
+
+```
+    stage('Upload') {
+      when { branch 'master' }
+      steps {
+        sh 'echo uploading'
+          withCredentials([file(credentialsId: 'chefadmin.pem', variable: 'CHEFPEM')]) {
+            sh '''
+              berks install && berks upload
+              knife upload /roles /data_bags /environments --chef-repo-path .
+              '''
+            }
+
+      }
+}
+```
+
+Visually, in [Jenkins Blue Ocean](https://jenkins.io/projects/blueocean/) it's quite
+![elegant](https://raw.githubusercontent.com/jeremymv2/chef-pipelines/master/blueocean.png)
 
 ## Cookbook Promotion Across Environments
 
@@ -458,12 +484,14 @@ Notes: In other articles and discussion circles you may sometimes hear the words
 and "Environment Cookbooks" used interchangeably.
 
 Much of this comes from ideas initially presented below with my own thoughts liberally dispersed throughout:
- * http://blog.vialstudios.com/the-environment-cookbook-pattern/
- * https://www.chef.io/blog/2013/11/19/chef-roles-arent-evil/
 
-## Important References
+## Important References & Additional Resources
  * Lamont Lucas ChefConf 2018 [Session](https://www.youtube.com/watch?v=yP-R7GRyydg)
- * Chef Jenkins [Plugin](https://github.com/chef/chef-jenkins-plugin)
  * Noah Kantrowitz thoughts on docker [Jenkins](https://coderanger.net/jenkins/)
  * Michael Hedgpeth has a great [Jenkinsfile](http://hedge-ops.com/cookbook-pipeline-with-jenkinsfile/)
  * TYPO3 real world Jenkins pipeline [libraries](https://github.com/TYPO3-infrastructure/jenkins-pipeline-global-library-chefci)
+ * The [Environment cookbook pattern](http://blog.vialstudios.com/the-environment-cookbook-pattern/)
+ * [Roles aren't evil](https://www.chef.io/blog/2013/11/19/chef-roles-arent-evil/)
+ * [Many great Chef Recommendations](https://github.com/chef-customers/shop-theory)
+ * [Chef Evalutation made Easy](https://github.com/mtyler/chef-evaluation)
+ * [Workflow Global Build Cookbooks](https://github.com/mtyler/example_global_build_cookbook)
