@@ -1,6 +1,6 @@
 # Pipelines for publishing and promoting Chef Policy
 
-![pipeline](https://raw.githubusercontent.com/jeremymv2/chef-pipelines/master/pipeline.png)
+![pipeline](https://raw.githubusercontent.com/jeremymv2/chef-pipelines/master/pipeline.jpg)
 
 ## Overview
 There is no time like the present to review the automation that builds, tests, publishes and promotes
