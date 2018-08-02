@@ -27,7 +27,7 @@ With the exception of cookbooks and policyfiles, the remainder are not versioned
 exists on the Chef Server is the source of truth. Transferring ownership of those objects to
 source control is the key to successfully implementing Pipelines.
 
-*Note* Somewhat outside the scope of Chef Policy, yet worth mentioning, are InSpec Compliance Profiles.
+**Note** Somewhat outside the scope of Chef Policy, yet worth mentioning, are InSpec Compliance Profiles.
 These also benefit greatly from being [pushed through a Pipeline](https://github.com/jeremymv2/compliance_profile_pipeline).
 
 ## Pipeline
