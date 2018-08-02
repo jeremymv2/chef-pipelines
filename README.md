@@ -136,10 +136,10 @@ to `berks upload ..` and `knife upload ..`. [Here's](https://github.com/FastRobo
             }
 
       }
-}
+    }
 ```
 
-Visually, in [Jenkins Blue Ocean](https://jenkins.io/projects/blueocean/) it's quite
+Visually, in [Jenkins Blue Ocean](https://jenkins.io/projects/blueocean/) it's quite elegant
 ![elegant](https://raw.githubusercontent.com/jeremymv2/chef-pipelines/master/blueocean.png)
 
 ## Cookbook Promotion Across Environments
