@@ -485,7 +485,7 @@ and "Environment Cookbooks" used interchangeably.
 
 Much of this comes from ideas initially presented below with my own thoughts liberally dispersed throughout:
 
-## Important References & Additional Resources
+## Additional Resources
  * Lamont Lucas ChefConf 2018 [Session](https://www.youtube.com/watch?v=yP-R7GRyydg)
  * Noah Kantrowitz thoughts on docker [Jenkins](https://coderanger.net/jenkins/)
  * Michael Hedgpeth has a great [Jenkinsfile](http://hedge-ops.com/cookbook-pipeline-with-jenkinsfile/)
