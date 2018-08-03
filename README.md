@@ -141,8 +141,14 @@ to `berks upload ..` and `knife upload ..`. [Here's](https://github.com/FastRobo
     }
 ```
 
-Visually, in [Jenkins Blue Ocean](https://jenkins.io/projects/blueocean/) it's quite elegant
+Visually, in [Jenkins Blue Ocean](https://jenkins.io/projects/blueocean/) there is an elegant
+simplicity:
 ![elegant](https://raw.githubusercontent.com/jeremymv2/chef-pipelines/master/blueocean.png)
+
+Another [Jenkinsfile](https://github.com/jjasghar/jenkinsfile_cookbook_pipeline/blob/master/Jenkinsfile)
+with a different approach, this time using Docker:
+
+![jjasghar](https://raw.githubusercontent.com/jjasghar/jenkinsfile_cookbook_pipeline/master/images/blueocean.png)
 
 ## Cookbook Promotion Across Environments
 
@@ -503,3 +509,4 @@ Much of this comes from ideas initially presented below with my own thoughts lib
  * [Many great Chef Recommendations](https://github.com/chef-customers/shop-theory)
  * [Chef Evalutation made Easy](https://github.com/mtyler/chef-evaluation)
  * [Workflow Global Build Cookbooks](https://github.com/mtyler/example_global_build_cookbook)
+ * [JJ Asghar's Docker Jenkinsfile](https://github.com/jjasghar/jenkinsfile_cookbook_pipeline)
