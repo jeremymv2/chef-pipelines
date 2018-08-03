@@ -485,6 +485,12 @@ Production Environment with equality version contraints.
 Notes: In other articles and discussion circles you may sometimes hear the words "Role Cookbooks"
 and "Environment Cookbooks" used interchangeably.
 
+## Visual Representation of this Environment Pattern
+
+![env_cookbook](https://raw.githubusercontent.com/jeremymv2/env_pinning/master/role_cookbook_pattern.png)
+
+
+
 Much of this comes from ideas initially presented below with my own thoughts liberally dispersed throughout:
 
 ## Additional Resources
