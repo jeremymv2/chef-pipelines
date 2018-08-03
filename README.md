@@ -142,11 +142,12 @@ to `berks upload ..` and `knife upload ..`. [Here's](https://github.com/FastRobo
 ```
 
 Visually, in [Jenkins Blue Ocean](https://jenkins.io/projects/blueocean/) there is an elegant
-simplicity:
+simplicity.
+
 ![elegant](https://raw.githubusercontent.com/jeremymv2/chef-pipelines/master/blueocean.png)
 
 Another [Jenkinsfile](https://github.com/jjasghar/jenkinsfile_cookbook_pipeline/blob/master/Jenkinsfile)
-with a different approach, this time using Docker:
+with a different approach, by JJ Asghar, this time using Docker.
 
 ![jjasghar](https://raw.githubusercontent.com/jjasghar/jenkinsfile_cookbook_pipeline/master/images/blueocean.png)
 
